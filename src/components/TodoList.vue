@@ -5,19 +5,21 @@
             :key="todo.id"
             :todo="todo"
         ></todo-item>
-
     </div>
-    <b-alert show variant="info" v-else>No hay Todos<b-alert>
+    <b-alert show variant="info" v-else>No hay todos</b-alert>
 </template>
 
 <script>
-import TodoItem from './TodoItem'
-export default {
-    props: {
+    import TodoItem from './TodoItem'
+    export default {
+      components: {
+        TodoItem
+      },
+      props: {
         todos: {
-            type: Array,
-            required: true
+          type: Array,
+          required: true
         }
+      }
     }
-}
-</script>>
+</script>
