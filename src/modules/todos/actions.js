@@ -51,7 +51,7 @@ export async function updateTodo ({commit}, todo) {
     }
 }
 
-export async function updateTodoStatus ({commit}, todo) {
+export async function updateTodoStatus ({commit, dispatch}, todo) {
     try {
         await Vue.axios({
             method: 'PUT',
@@ -62,6 +62,7 @@ export async function updateTodoStatus ({commit}, todo) {
                 done: ! todo.done
             }
         })
+        dispatch('fetchTodos')
         
     } catch (e) {
         commit('todosError', e.message)

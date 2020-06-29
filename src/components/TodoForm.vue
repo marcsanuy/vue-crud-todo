@@ -9,15 +9,15 @@
                 autocomplete="off"
                 id="todo"
                 v-model="todo.text"
-                :state="$v.todo.text.$invalid"
+                :state="!$v.todo.text.$invalid"
                 placeholder="Introduce la tarea"
                 @input="$v.todo.$touch"
             ></b-form-input>
-            <b-form-invalid-feddback id="todoInfo" v-if="$v.todo.$dirty">
-                Este campo es requerido y debe tener un mínimo de 4 carácteres.
-            </b-form-invalid-feddback>
+            <b-form-invalid-feedback id="todoInfo" v-if="$v.todo.$dirty">
+                Este campo es requerido y debe tener una longitud mínima de 4
+            </b-form-invalid-feedback>
         </b-form-group>
-
+        
         <b-button
             type="submit"
             variant="primary"
@@ -25,31 +25,30 @@
         >
             {{ todoSubmit }}
         </b-button>
-
     </b-form>
 </template>
 
 <script>
-import { validationMixin } from 'vuelidate'
-import { required , minLength } from 'vuelidate/lib/validators'
-export default {
-    mixins: [validationMixin],
-    props: {
+    import { validationMixin } from 'vuelidate'
+    import { required, minLength } from 'vuelidate/lib/validators'
+    export default {
+      mixins: [validationMixin],
+      props: {
         todo: {
-            type: Object,
-            required: true
+          type: Object,
+          required: true
         },
         todoSubmit: {
-            type: String,
-            default: 'Crear Todo'
+          type: String,
+          default: 'Crear todo'
         }
-    },
-    validations: {
+      },
+      validations: {
         todo: {
-            text: {
-                required, minLength: minLength(4)
-            }
+          text: {
+            required, minLength: minLength(4)
+          },
         }
+      }
     }
-}
-</script>>
+</script>
