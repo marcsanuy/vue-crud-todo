@@ -1,14 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1593680918891,
-      "text": "Daily",
-      "done": true
-    },
-    {
-      "id": 1593680940067,
-      "text": "Walking Skeleton",
-      "done": false
-    }
-  ]
+  "todos": []
 }
